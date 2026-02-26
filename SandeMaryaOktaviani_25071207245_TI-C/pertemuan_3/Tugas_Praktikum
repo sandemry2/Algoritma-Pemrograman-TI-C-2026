@@ -1,0 +1,65 @@
+#VEHICLE 
+
+
+# Parent Class
+
+class Vehicle:
+    def __init__(self, jenis, merk, tahun_rilis):
+        self.jenis = jenis
+        self.merk = merk
+        self.tahun_rilis = tahun_rilis
+
+    def sound(self):
+        return "suara"
+
+    def info_vehicle(self):
+        return f"{self.jenis} merk {self.merk} rilis tahun {self.tahun_rilis}"
+
+
+
+# Child Class 1 - Mobil
+
+class Mobil(Vehicle):
+    def __init__(self, jenis, merk, tahun_rilis, jumlah_pintu):
+        super().__init__(jenis, merk, tahun_rilis)
+        self.__jumlah_pintu = jumlah_pintu  # atribut private
+
+    def get_jumlah_pintu(self):
+        return self.__jumlah_pintu
+
+
+
+# Child Class 2 - Motor
+
+class Motor(Vehicle):
+    def __init__(self, jenis, merk, tahun_rilis, tipe_mesin):
+        super().__init__(jenis, merk, tahun_rilis)
+        self.__tipe_mesin = tipe_mesin  # atribut private
+
+    def get_tipe_mesin(self):
+        return self.__tipe_mesin
+
+
+# Membuat 3 Objek
+
+kendaraan = Vehicle("Kendaraan Umum", "Universal", 2021)
+mobil = Mobil("Mobil", "BYD", 2024, 4)
+motor = Motor("Motor", "Yamaha", 2023, "155cc")
+
+
+
+# Output
+
+print("===== DATA VEHICLE =====")
+print(kendaraan.info_vehicle())
+print("Sound:", kendaraan.sound())
+
+print("\n===== DATA MOBIL =====")
+print(mobil.info_vehicle())
+print("Jumlah Pintu:", mobil.get_jumlah_pintu())
+print("Sound:", mobil.sound())
+
+print("\n===== DATA MOTOR =====")
+print(motor.info_vehicle())
+print("Tipe Mesin:", motor.get_tipe_mesin())
+print("Sound:", motor.sound())
